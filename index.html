@@ -42,13 +42,18 @@ ul{
 	line-height: 1.4;
 }
 
+.resaltar
+{
+	color:rgba(0,129,195,.9);
+}
+
 li{
 	margin: 0 0 15px 0;
 }
 
-.reveal p {
+.reveal p, .reveal ul {
     line-height: 1.35;
-	font-weight:275;
+	font-weight:350 !important;
 }
 
 .reveal section pre code {
@@ -65,11 +70,11 @@ li{
 					<hr/>
 					<div style="margin-top:50px">
 						<div style="float:left;text-align:center">
-						<p><small><b>Autor </b><br/>Pablo González González</small><br></p>
+						<p><small><spam class="resaltar">Autor </spam><br/>Pablo González González</small><br></p>
 						</div>
 						<div style="float:right">
 						<p>
-						<small><b>Directores </b><br/>Dr. Juan José Del Coz<br/>Dr. Jorge Díez</small></p>
+						<small><spam class="resaltar">Directores </spam><br/>Dr. Juan José Del Coz<br/>Dr. Jorge Díez</small></p>
 					</div></div>
 
 
@@ -135,8 +140,8 @@ li{
 					<div class="container">
 						<div class="col">
 							<ul>
-								<li>Muestras obtenidas en <b>diferentes localizaciones</b> del Mar Cantábrico</li>
-								<li>Formado por <b>60 muestras</b> y unas <b>40.000 imágenes</b> etiquetadas manualmente en <b>8 categorías</b></li>
+								<li>Muestras obtenidas en <spam class="resaltar">diferentes localizaciones</spam> del Mar Cantábrico</li>
+								<li>Formado por <spam class="resaltar">60 muestras</spam> y unas <spam class="resaltar">40.000 imágenes</spam> etiquetadas manualmente en <spam class="resaltar">8 categorías</spam></li>
 							</ul>
 						</div>
 						<div class="col">
@@ -191,10 +196,10 @@ li{
 				<section>
 					<h3>Dificultades que presentan ambos conjuntos de datos</h3>
 					<ul>
-						<li>Grandes <b>cambios en la distribución</b> de muestra a muestra</li>
-						<li><b>Dificultad para reconocer</b> cada una de las especies por parte de los expertos</li>
-						<li>Diferentes <b>subespecies</b> en cada una de las categorías</li>
-						<li><b>Calidad</b> de las imágenes</li>
+						<li>Grandes <spam class="resaltar">cambios en la distribución</spam> de muestra a muestra</li>
+						<li><spam class="resaltar">Dificultad para reconocer</spam> cada una de las especies por parte de los expertos</li>
+						<li>Diferentes <spam class="resaltar">subespecies</spam> en cada una de las categorías</li>
+						<li><spam class="resaltar">Calidad</spam> de las imágenes</li>
 					</ul>
 				</section>
 
@@ -219,7 +224,7 @@ li{
 
 				<section>
 					<h3>Características tradicionales</h3>
-					<p>Pertenecientes al campo de la <b>visión artificial</b>. Realizan una serie de cálculos matemáticos sobre los píxeles de la imagen.</p>
+					<p>Pertenecientes al campo de la <spam class="resaltar">visión artificial</spam>. Realizan una serie de cálculos matemáticos sobre los píxeles de la imagen.</p>
 					<p style="text-align:left">Algunos ejemplos son los siguientes:</p>
 					<ul>
 						<li>Descriptores de forma (Fourier)</li>
@@ -230,14 +235,14 @@ li{
 
 				<section>
 					<h3>Características computadas por una CNN</h3>
-					<p>Una CNN es una <b>red neuronal convolucional</b></p>
+					<p>Una CNN es una <spam class="resaltar">red neuronal convolucional</spam></p>
 					<p>Es una de las técnicas principales del <i>Deep Learning</i></p>
 					<img src="img/deeplearning.png" style="background-color:white; padding: 10px" ></img>
 				</section>
 
 				<section>
 					<h3>¿Como funciona una CNN?</h3>
-					<p>La propia red es capaz de aprender a representar las imágenes</b></p>
+					<p>La propia red es capaz de aprender a representar las imágenes</spam></p>
 					<img src="img/cnn.png" style="background-color:white; padding: 10px" ></img>
 				</section>
 
@@ -281,8 +286,8 @@ li{
 
 				<section>
 					<h3>Fine Tuning</h3>
-					<p><b>Eliminamos la última capa</b> de la red y la reemplazamos por una nueva adaptada a nuestro problema</p>
-					<p><b>Reentrenamos la red</b> aplicando cambios muy pequeños presentándole imágenes de plancton</p>
+					<p><spam class="resaltar">Eliminamos la última capa</spam> de la red y la reemplazamos por una nueva adaptada a nuestro problema</p>
+					<p><spam class="resaltar">Reentrenamos la red</spam> aplicando cambios muy pequeños presentándole imágenes de plancton</p>
 				</section>
 
 				<section>
@@ -293,12 +298,12 @@ li{
 				<section>
 					<h3>La forma más sencilla de cuantificar</h3>
 					<p>El método más sencillo para cuantificar es el método <i>Clasificar y Contar</i> (CC)</p>
-					<p>Este método <b>no es óptimo</b> y sus resultados pueden ser mejorados</p>
+					<p>Este método <spam class="resaltar">no es óptimo</spam> y sus resultados pueden ser mejorados</p>
 				</section>
 
 				<section>
 					<h3>Algoritmos específicos para cuantificar</h3>
-					<p>Los algoritmos utilizados en esta tesis han sido <b>PCC</b>, <b>AC</b>, <b>PAC</b> y <b>HDy</b></p>
+					<p>Los algoritmos utilizados en esta tesis han sido <spam class="resaltar">PCC</spam>, <spam class="resaltar">AC</spam>, <spam class="resaltar">PAC</spam> y <spam class="resaltar">HDy</spam></p>
 					<aside class="notes">
 						<ul>
 							<li>Incluir los nombres completos de los algoritmos</li>
@@ -321,7 +326,7 @@ li{
 
 				<section>
 					<h3>HDy</h3>
-					<p>Método basado en la comparación de distribuciones utilizando la <b>distancia de Hellinger</b></p>
+					<p>Método basado en la comparación de distribuciones utilizando la <spam class="resaltar">distancia de Hellinger</spam></p>
 					<img src="img/hdy.png" style="width:100%;background-color:white; padding: 10px" ></img>
 					<aside class="notes">
 						<ul>
@@ -332,7 +337,7 @@ li{
 
 				<section>
 					<h3>Cuantificadores multiclase</h3>
-					<p>Se utiliza un enfoque <b>one-vs-all</b> entrenando tantos cuantificadores binarios como clases tiene el problema</p>
+					<p>Se utiliza un enfoque <spam class="resaltar">one-vs-all</spam> entrenando tantos cuantificadores binarios como clases tiene el problema</p>
 				</section>
 
 				<section>
@@ -342,14 +347,14 @@ li{
 
 				<section>
 					<h3>Estrategia de validación</h3>
-					<p>La unidad mínima para los experimentos es la <b>muestra</b> y no el indivíduo</p>
+					<p>La unidad mínima para los experimentos es la <spam class="resaltar">muestra</spam> y no el indivíduo</p>
 				</section>
 
 				<section>
 					<h3>Métodos de validación</h3>
 					<ul>
-						<li>Validación cruzada por muestra dejando una fuera (<b>LOO por muestra</b>) <i class="fa fa-arrow-right" style="font-size:24px"></i> cuando hay pocas muestras</li>
-						<li>División del conjunto en entrenamiento y prueba (<b>Hold-out</b>) <i class="fa fa-arrow-right" style="font-size:24px"></i> cuando hay suficientes muestras</li>
+						<li>Validación cruzada por muestra dejando una fuera (<spam class="resaltar">LOO por muestra</spam>) <i class="fa fa-arrow-right" style="font-size:24px"></i> cuando hay pocas muestras</li>
+						<li>División del conjunto en entrenamiento y prueba (<spam class="resaltar">Hold-out</spam>) <i class="fa fa-arrow-right" style="font-size:24px"></i> cuando hay suficientes muestras</li>
 					</ul>
 
 					<aside class="notes">
@@ -381,9 +386,9 @@ li{
 				<section>
 					<h3>¿Por qué utilizar la muestra como unidad mínima?</h3>
 					<ul>
-						<li>Se añade una <b>variabilidad real</b> en los experimentos.</li>
-						<li>Se obtiene una <b>estimación más realista</b> del rendimiento del modelo.</li>
-						<li>Nos permite un <b>análisis más detallado</b> de los resultados y la posible detección de errores.</li>
+						<li>Se añade una <spam class="resaltar">variabilidad real</spam> en los experimentos.</li>
+						<li>Se obtiene una <spam class="resaltar">estimación más realista</spam> del rendimiento del modelo.</li>
+						<li>Nos permite un <spam class="resaltar">análisis más detallado</spam> de los resultados y la posible detección de errores.</li>
 					</ul>
 				</section>
 
@@ -423,7 +428,7 @@ li{
 
 				<section>
 					<h3>Difusión de resultados</h3>
-					<p>El contenido de esta tésis se ha publicado en <strong>tres artículos</strong> en revistas científicas indexadas en el JCR</p>
+					<p>El contenido de esta tésis se ha publicado en <spam class="resaltar">tres artículos</spam> en revistas científicas indexadas en el JCR</p>
 				</section>
 
 				<section>
