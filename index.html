@@ -1,0 +1,530 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Diseño de métodos de cuantificación aplicados a la estimación de la distribución de grupos taxonómicos presentes en muestras de plancton</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+			.reveal section p,section ul{
+    font-size: 0.9em !important;
+
+}
+figcaption {
+	font-size:0.8em !important;
+}
+
+ul {list-style-type: square;}
+
+ul{
+	text-align: left;
+	line-height: 1.4;
+}
+
+li{
+	margin: 0 0 15px 0;
+}
+
+.reveal p {
+    line-height: 1.35;
+}
+
+.reveal section pre code {
+    font-size: 0.7em !important;
+}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h3>Diseño de métodos de cuantificación aplicados a la estimación de la distribución de grupos taxonómicos presentes en muestras de plancton</h3>
+					<hr/>
+					<div style="margin-top:50px">
+						<div style="float:left;text-align:center">
+						<p><small><b>Autor </b><br/>Pablo González González</small><br></p>
+						</div>
+						<div style="float:right">
+						<p>
+						<small><b>Directores </b><br/>Dr. Juan José Del Coz<br/>Dr. Jorge Díez</small></p>
+					</div></div>
+
+
+<div>
+<img style="width:20%" src="img/uniovi.jpg"/>
+
+</div>
+<p style="text-align:center">
+<small>Doctorado en Informática, Universidad de Oviedo, 2019</small>
+</p>
+				</section>
+
+				<section>
+					<h2>Introducción</h2>
+					<p>Desarrollo de técnicas y algoritmos adecuados para cuantificar muestras de plancton descritas a partir de imágenes capturadas por dispositivos automáticos</p>
+					<img src="img/plankton_images.png"</img>
+				</section>
+
+				<section>
+					<h3>¿En qué consiste cuantificar?</h3>
+					<p>El objetivo es procesar una muestra de plancton y obtener la distribución de los organismos existentes en ella</p>
+					<img src="img/cuantificar.png" style="padding:10px;background-color:white;width:100%" ></img>
+					<aside class="notes">
+						<ul>
+							<li>Diferencia entre cuantificación y clasificación</li>
+							<li>Particularidades del problema (cambio de distribución)</li>
+					 </ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Fases del proceso</h2>
+					<p>Para poder construir un modelo de cuantificación, tendremos que completar las siguientes fases</p>
+					<img src="img/visiongeneral.png" style="width:90%" ></img>
+					<aside class="notes">
+						<ul>
+							<li>Particularidades del problema (cambio de distribución)</li>
+					 </ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Fase 1</h2>
+					<h3>Obtención de muestras</h3>
+				</section>
+
+				<section>
+					<h3>Conjuntos de datos utilizados</h3>
+					<ul>
+						<li>Conjunto de datos del Instituto Oceanográfico de Gijón</li>
+						<li>Conjunto de datos del Woods Hole Oceanographic Institution</li>
+					</ul>
+					<div style="float:left;width:40%;margin-left:10%">
+							<img src="img/gijon.jpg"></img>
+					</div>
+					<div style="float:left;width:40%">
+							<img src="img/woods.png" ></img>
+					</div>
+				</section>
+
+				<section>
+					<h4>Conjunto de datos del Instituto Oceanográfico de Gijón</h4>
+					<div class="container">
+						<div class="col">
+							<ul>
+								<li>Muestras obtenidas en <b>diferentes localizaciones</b> del Mar Cantábrico</li>
+								<li>Formado por <b>60 muestras</b> y unas <b>40.000 imágenes</b> etiquetadas manualmente en <b>8 categorías</b></li>
+							</ul>
+						</div>
+						<div class="col">
+							<img src="img/distribucioniog.png" style="width:75%;padding:10px"/>
+						</div>
+					</div>
+					<aside class="notes">
+						<ul>
+							<li>Utiliza la flowcam que puede ir en un barco</li>
+							<li>Diversidad espacial y temporal que garantiza una gran variabilidad en los datos</li>
+					 </ul>
+					</aside>
+				</section>
+
+				<section>
+					<h4>Conjunto de datos del Woods Hole Oceanographic Institution</h4>
+						<p>Formado por 964 muestras y 3.4 millones de imágenes etiquetadas manualmente en 50 categorías</p>
+						<img src="img/mvco.jpg" style="width:50%"/>
+						<aside class="notes">
+							<ul>
+								<li>Martha Vineyard Coastal Observatory (Martha Vineyard island, Massachussets)</li>
+							 	<li>FlowCytobot situada a 4 metros de profundidad. Cable marino hasta el observatorio.</li>
+								<li>Serie temporal desde 2006</li>
+						 </ul>
+						</aside>
+				</section>
+
+				<section>
+					<h3>Dispositivos de captura utilizados para obtener las imágenes</h3>
+					<div style="float:left;width:30%;margin-left:15%;margin-right:10%;margin-top:10%">
+<figure>
+							<img src="img/flowcam.jpg" style="width:100%"></img>
+							<figcaption>Flowcam (Utilizado por el IEO)</figcaption>
+						</figure>
+					</div>
+
+					<div style="float:left;width:30%">
+						<figure>
+							<img src="img/flowcytobot.jpg" style="width:100%" ></img>
+							<figcaption>FlowCytobot (Utilizado por el WHOI)</figcaption>
+						</figure>
+					</div>
+
+					<aside class="notes">
+						<ul>
+							<li>Dispositivos utilizados, como funcionan</li>
+						 	<li>Conjuntos de datos utilizados: el de eva y el del whoi</li>
+					 </ul>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Dificultades que presentan ambos conjuntos de datos</h3>
+					<ul>
+						<li>Grandes <b>cambios en la distribución</b> de muestra a muestra</li>
+						<li><b>Dificultad para reconocer</b> cada una de las especies por parte de los expertos</li>
+						<li>Diferentes <b>subespecies</b> en cada una de las categorías</li>
+						<li><b>Calidad</b> de las imágenes</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Ejemplo de la variabilidad de cada muestra</h3>
+					<p>Prevalencia de la clase Cerataulina</p>
+					<img style="width:80%" src="img/samplevariation.png"></img>
+				</section>
+
+				<section>
+					<h2>Fase 2</h2>
+					<h3>Cálculo de características</h3>
+				</section>
+
+				<section>
+					<h3>Enfoques utilizados</h3>
+					<ul>
+						<li>Características tradicionales (forma y textura)
+						<li>Características computadas usando una CNN</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Características tradicionales</h3>
+					<p>Pertenecientes al campo de la <b>visión artificial</b>. Realizan una serie de cálculos matemáticos sobre los píxeles de la imagen.</p>
+					<p style="text-align:left">Algunos ejemplos son los siguientes:</p>
+					<ul>
+						<li>Descriptores de forma (Fourier)</li>
+						<li>Momentos invariantes (Hu)</li>
+						<li>Atributos de textura (Haralick)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Características computadas por una CNN</h3>
+					<p>Una CNN es una <b>red neuronal convolucional</b></p>
+					<p>Es una de las técnicas principales del <i>Deep Learning</i></p>
+					<img src="img/deeplearning.png" style="background-color:white; padding: 10px" ></img>
+				</section>
+
+				<section>
+					<h3>¿Como funciona una CNN?</h3>
+					<p>La propia red es capaz de aprender a representar las imágenes</b></p>
+					<img src="img/cnn.png" style="background-color:white; padding: 10px" ></img>
+				</section>
+
+				<section>
+					<h3>¿Por qué son interesantes las CNNs para nuestro problema?</h3>
+					<ul>
+					<li>Muy buenas para la clasificación de imágenes</p>
+					<li>Posibilidad de utilizarlas para computar características de imágenes</p>
+				  <li>Posibilidad de utilizar redes preentrenadas y adaptarlas a nuestro problema</p>
+				</ul>
+
+				</section>
+
+				<section>
+					<h3>Arquitecturas de CNNs</h3>
+					<p>La primera CNN fue <i>AlexNet</i> en 2012 (8 capas)</p>
+					<p>A partir de ahí han aparecido redes más prufundas como <i>VGG</i> (19 capas) o <i>Inception</i> (22 capas)</p>
+					<p>Cuanto más profundas son las redes cuesta más entrenarlas y los resultados empiezan a empeorar</p>
+				</section>
+
+				<section>
+					<h4>CNNs más profundas</h4>
+					<p>Las redes <i>Resnet</i> resuelven el problema añadiendo un enlace entre capas</p>
+					<img src="img/resnet.png" style="background-color:white; padding: 10px" ></img>
+					<p>Con esta arquitectura las <i>Resnet</i> pueden superar las 100 capas</p>
+				</section>
+
+				<section>
+					<h4>¿Por qué elegimos las Resnet?</h4>
+					<p>Ganadoras del concurso ImageNet en 2015 con un error del 3.6%</p>
+					<img src="img/imagenet.jpg" style="width:60%;background-color:white; padding: 10px" ></img>
+				</section>
+
+				<section>
+					<h3>Transfer Learning</h3>
+					<blockquote style="bacground-color:black">
+						&ldquo;La aplicación de destrezas, conocimiento, y otras aptitudes que fueron aprendidas en una situación a otro problema de aprendizaje.&rdquo; (Perkins, 1992)
+					</blockquote>
+					<img src="img/transferlearning.jpg" style="background-color:white; padding: 10px" ></img>
+				</section>
+
+				<section>
+					<h3>Fine Tuning</h3>
+					<p><b>Eliminamos la última capa</b> de la red y la reemplazamos por una nueva adaptada a nuestro problema</p>
+					<p><b>Reentrenamos la red</b> aplicando cambios muy pequeños presentándole imágenes de plancton</p>
+				</section>
+
+				<section>
+					<h2>Fase 3</h2>
+				  <h3>Algoritmos de cuantificación</h3>
+				</section>
+
+				<section>
+					<h3>La forma más sencilla de cuantificar</h3>
+					<p>El método más sencillo para cuantificar es el método <i>Clasificar y Contar</i> (CC)</p>
+					<p>Este método <b>no es óptimo</b> y sus resultados pueden ser mejorados</p>
+				</section>
+
+				<section>
+					<h3>Algoritmos específicos para cuantificar</h3>
+					<p>Los algoritmos utilizados en esta tesis han sido <b>PCC</b>, <b>AC</b>, <b>PAC</b> y <b>HDy</b></p>
+					<aside class="notes">
+						<ul>
+							<li>Incluir los nombres completos de los algoritmos</li>
+					 </ul>
+				 </aside>
+				</section>
+
+				<section>
+					<h3>Probabilistic Classify & Count</h3>
+					<p>PCC utiliza las salidas de un clasificador probabilistico para promediar la prevalencia de cada clase</p>
+
+					$\hat{p}^{PCC}_{j}=\frac{1}{|T|}\sum_{x \in T} P(y = c_{j} | x)$
+				</section>
+
+				<section>
+					<h3>Adjusted Count y Probabilistic Adjusted Count</h3>
+					<p>AC y PAC utilizan una corrección basada en el TPR y FPR del clasificador</p>
+					$\hat{p}^{AC}_{j}=\frac{\hat{p}^{CC}_{j}-fpr}{tpr-fpr}$
+				</section>
+
+				<section>
+					<h3>HDy</h3>
+					<p>Método basado en la comparación de distribuciones utilizando la <b>distancia de Hellinger</b></p>
+					<img src="img/hdy.png" style="width:100%;background-color:white; padding: 10px" ></img>
+					<aside class="notes">
+						<ul>
+							<li>Meter la explicación de HDy resumida</li>
+					 </ul>
+				 </aside>
+				</section>
+
+				<section>
+					<h3>Cuantificadores multiclase</h3>
+					<p>Se utiliza un enfoque <b>one-vs-all</b> entrenando tantos cuantificadores binarios como clases tiene el problema</p>
+				</section>
+
+				<section>
+					<h2>Fase 4</h2>
+					<h3>Validación de resultados</h3>
+				</section>
+
+				<section>
+					<h3>Estrategia de validación</h3>
+					<p>La unidad mínima para los experimentos es la <b>muestra</b> y no el indivíduo</p>
+				</section>
+
+				<section>
+					<h3>Métodos de validación</h3>
+					<ul>
+						<li>Validación cruzada por muestra dejando una fuera (<b>LOO por muestra</b>) <i class="fa fa-arrow-right" style="font-size:24px"></i> cuando hay pocas muestras</li>
+						<li>División del conjunto en entrenamiento y prueba (<b>Hold-out</b>) <i class="fa fa-arrow-right" style="font-size:24px"></i> cuando hay suficientes muestras</li>
+					</ul>
+
+					<aside class="notes">
+						<ul>
+
+					 </ul>
+				</section>
+
+				<section>
+					<h3>LOOCV</h3>
+					<img src="img/loosample.png" style="width:50%;padding:10px;background-color:white" ></img>
+				</section>
+
+				<section>
+					<h3>Comparación entre una CV por individuo y por muestra</h3>
+					<figure>
+						<img src="img/resultscvsample.png" style="width:80%;padding:10px;background-color:white" ></img>
+						<figcaption><small>Resultados de acierto en porcentaje para el conjunto del IEO</small></figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h3>¿Por qué la CV por muestra obtiene peores resultados que una CV tradicional?</h3>
+					<figure>
+						<img src="img/reshellinger.png" style="width:80%;padding:10px;background-color:white" ></img>
+					</figure>
+				</section>
+
+				<section>
+					<h3>¿Por qué utilizar la muestra como unidad mínima?</h3>
+					<ul>
+						<li>Se añade una <b>variabilidad real</b> en los experimentos.</li>
+						<li>Se obtiene una <b>estimación más realista</b> del rendimiento del modelo.</li>
+						<li>Nos permite un <b>análisis más detallado</b> de los resultados y la posible detección de errores.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Hold-out por muestra</h3>
+					<figure>
+  					<img src="img/holdout.png" style="width:60%;padding:10px;background-color:white" ></img>
+  					<figcaption><small>Muestras del conjunto WHOI-Plankton.</small></figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h3>Medidas de error</h3>
+					<p>Las medidas de error utilizadas tienen que ser específicas para el problema de cuantificación</p>
+				</section>
+
+				<section>
+					<h4>Error absoluto medio (MAE)</h3>
+<p>
+					$MAE(c_{j})=\frac{1}{m} \sum_{s=1}^{m} | p_{j,s} - \hat{p}_{j,s} |$</p>
+					<p>Valor fácilmente interpretable en el rango [0,1]
+
+				</section>
+
+				<section>
+					<h3>Error absoluto relativo medio (MRAE)</h3>
+					<p>$MRAE(c_{j})=\frac{1}{m} \sum_{s=1}^{m} \frac{\epsilon+|p_{j,s} - \hat{p}_{j,s}|}{\epsilon + p_{j,s}}$</p>
+				</section>
+
+				<section>
+					<h3>Resultados para el conjunto WHOI-Plankton</h3>
+					<figure>
+					<img src="img/resultsae.png" style="padding:10px; width:90%"</img>
+					<figcaption>Tabla con todos los errores MAE para NF (características tradicionales) y Resnets de diferentes tamaños (reentrenadas y sin reentrenar*)</figcaption>
+</figure>
+				</section>
+
+				<section>
+					<h3>Difusión de resultados</h3>
+					<p>El contenido de esta tésis se ha publicado en <strong>tres artículos</strong> en revistas científicas indexadas en el JCR</p>
+				</section>
+
+				<section>
+					<h3>Difusión de resultados - Artículo 1</h3>
+					<p>A Review on Quantification Learning</p>
+					<p>(ACM Computing Surveys, 2017)</p>
+					<img src="img/acmlogo.png" style="width:60%"></img>
+				</section>
+
+				<section>
+					<h3>A Review on Quantification Learning</h3>
+					<div class="container">
+						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
+							<p>Introducción a la cuantificación como problema con entidad propia dentro del campo de aprendizaje automático y revisión de los principales métodos hasta la fecha</p>
+						</div>
+						<div class="col">
+							<img style="width:100%" src="img/acmpage.png"/>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Difusión de resultados - Artículo 2</h3>
+					<p>Validation methods for plankton image classification systems</p>
+					<p>(Limnology and Oceanography: Methods, 2016)</p>
+					<img src="img/lomlogo.png" style="width:60%"></img>
+				</section>
+
+				<section>
+					<h3>Validation methods for plankton image classification systems</h3>
+					<div class="container">
+						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
+							<p>Desarrollo de métodos de validación apropiados para problemas con grandes cambios en la distribución de sus muestras</p>
+						</div>
+						<div class="col">
+							<img style="width:100%" src="img/lompage.png"/>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Difusión de resultados - Artículo 3</h3>
+					<p>Automatic plankton quantification using deep features</p>
+					<p>(Journal of Plankton Research, 2019)</p>
+				</section>
+
+				<section>
+					<h3>Automatic plankton quantification using deep features</h3>
+					<div class="container">
+						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
+							<p>Uso de <i>deep learning</i> y <i>transfer learning</i> para cuantificar muestras de plankton</p>
+						</div>
+						<div class="col">
+							<img style="width:100%" src="img/jprpage.png"/>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h3>Reproducibilidad de los resultados</h3>
+					<p style="text-align:left">Con el fin de garantizar la reproducibilidad de los resultados se han generado los siguientes recursos:</p>
+					<ul style="font-size:70%">
+						<li>Cuenta de <a href="https://github.com/pglez82/IFCB_quantification">GitHub</a> con todo el código necesario para repetir los experimentos</li>
+						<li><a href="https://pglez82.github.io/IFCB_quantification/">Sitio web</a> con los principales resultados de la investigación</li>
+						<li>Todas las herramientas utilizadas son <i>Open Source</i></li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Indicar además que todo ha sido hecho con software libre</li>
+					 </ul>
+				</section>
+
+				<section>
+					<h2>FIN</h2>
+					<h4>Muchas gracias por la atención</h4>
+				</section>
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					//{ src: 'plugin/mathsvg/math.js', async: true },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+			Reveal.configure({ slideNumber: true })
+		</script>
+	</body>
+</html>
