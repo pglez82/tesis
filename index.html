@@ -343,7 +343,11 @@ li{
 					<img src="img/hdy.png" style="width:100%;background-color:white; padding: 10px" ></img>
 					<aside class="notes">
 						<ul>
-							<li>Meter la explicación de HDy resumida</li>
+							<li>Se utiliza un clasificador probabilístico por debajo</li>
+							<li>Clasificamos el conjunto de entrenamiento</li>
+							<li>Clasificamos el conjunto de test</li>
+							<li>Pintamos un histograma para cada uno, simplemente donde van cayendo la prob devuelta por cada clasificador para cada ejemplo</li>
+							<li>Vamos generando diferentes conjuntos variando p en el conjunto de entrenamiento y los comparamos con la distribución del conjunto de test usando HD</li>
 					 </ul>
 				 </aside>
 				</section>
@@ -390,7 +394,7 @@ li{
 				</section>
 
 				<section>
-					<h3>¿Por qué la CV por muestra obtiene peores resultados que una CV tradicional?</h3>
+					<h3>¿Por qué LOO por muestra obtiene peores resultados que una CV tradicional?</h3>
 					<figure>
 						<img src="img/reshellinger.png" style="width:80%;padding:10px;background-color:white" ></img>
 					</figure>
