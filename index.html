@@ -24,12 +24,21 @@
 			.container{
 				display: flex;
 			}
+			blockquote{
+				background-color:#F0F0F0;
+				padding:15px;
+				font-weight: 285;
+			}
+
 			.col{
 				flex: 1;
 			}
-			.reveal section p,section ul,.MathJax{
+			.reveal section p,section ul{
     font-size: 0.9em !important;
 
+}
+.MathJax span{
+font-size: xx-large;
 }
 
 figcaption {
@@ -90,7 +99,7 @@ li{
 
 				<section>
 					<h2>Introducción</h2>
-					<p>Desarrollo de técnicas y algoritmos adecuados para cuantificar muestras de plancton descritas a partir de imágenes capturadas por dispositivos automáticos</p>
+					<p>Desarrollo de técnicas y métodos adecuados para cuantificar muestras de plancton descritas a partir de imágenes capturadas por dispositivos automáticos</p>
 					<img style="width:100%" src="img/plankton_images.png"</img>
 				</section>
 
@@ -159,7 +168,7 @@ li{
 
 				<section>
 					<h4>Conjunto de datos del Woods Hole Oceanographic Institution</h4>
-						<p>Formado por 964 muestras y 3.4 millones de imágenes etiquetadas manualmente en 50 categorías</p>
+						<p>Formado por <span class="resaltar">964 muestras</span> y <span class="resaltar">3.4 millones de imágenes</span> etiquetadas manualmente en <span class="resaltar">50 categorías</span></p>
 						<img src="img/mvco.jpg" style="width:50%"/>
 						<aside class="notes">
 							<ul>
@@ -195,19 +204,33 @@ li{
 				</section>
 
 				<section>
-					<h3>Dificultades que presentan ambos conjuntos de datos</h3>
+					<h3>Concepto de muestra</h3>
+					<p>Una muestra es el conjunto de especímenes de plancton fotografiados por un dispositivo de captura en un <span class="resaltar">lugar y momento determinados</span></p>
+					<img src="img/sampletoimages.png" style="width:100%" ></img>
+					<figcaption>A partir de una muestra, después de un proceso automático de fotografiado y segmentación de las imágenes, obtenemos un conjunto de imágenes</figcaption>
+				</section>
+
+
+
+				<section>
+					<h3>Ejemplo de la variabilidad de cada muestra (IEO)</h3>
+					<img style="width:70%" src="img/distribucion.png"></img>
+				</section>
+
+				<section>
+					<h3>Ejemplo de la variabilidad de cada muestra (WHOI)</h3>
+					<p>Prevalencia de la clase Cerataulina</p>
+					<img style="width:80%" src="img/samplevariation.png"></img>
+				</section>
+
+				<section>
+					<h3>Dificultades que presentan ambos conjuntos</h3>
 					<ul>
 						<li>Grandes <spam class="resaltar">cambios en la distribución</spam> de muestra a muestra</li>
 						<li><spam class="resaltar">Dificultad para reconocer</spam> cada una de las especies por parte de los expertos</li>
 						<li>Diferentes <spam class="resaltar">subespecies</spam> en cada una de las categorías</li>
 						<li><spam class="resaltar">Calidad</spam> de las imágenes</li>
 					</ul>
-				</section>
-
-				<section>
-					<h3>Ejemplo de la variabilidad de cada muestra</h3>
-					<p>Prevalencia de la clase Cerataulina</p>
-					<img style="width:80%" src="img/samplevariation.png"></img>
 				</section>
 
 				<section>
@@ -259,16 +282,16 @@ li{
 
 				<section>
 					<h3>Arquitecturas de CNNs</h3>
-					<p>La primera CNN fue <i>AlexNet</i> en 2012 (8 capas)</p>
-					<p>A partir de ahí han aparecido redes más prufundas como <i>VGG</i> (19 capas) o <i>Inception</i> (22 capas)</p>
+					<p>Una de las primeras CNN fue <span class="resaltar">AlexNet</span> en 2012 (8 capas)</p>
+					<p>A partir de ahí han aparecido redes más prufundas como <span class="resaltar">VGG</span> (19 capas) o <span class="resaltar">Inception</span> (22 capas)</p>
 					<p>Cuanto más profundas son las redes cuesta más entrenarlas y los resultados empiezan a empeorar</p>
 				</section>
 
 				<section>
 					<h4>CNNs más profundas</h4>
-					<p>Las redes <i>Resnet</i> resuelven el problema añadiendo un enlace entre capas</p>
+					<p>Las redes <span class="resaltar">Resnet</span> resuelven el problema añadiendo un enlace entre capas</p>
 					<img src="img/resnet.png" style="background-color:white; padding: 10px" ></img>
-					<p>Con esta arquitectura las <i>Resnet</i> pueden superar las 100 capas</p>
+					<p>Con esta arquitectura las <span class="resaltar">Resnet</span> pueden superar las 100 capas</p>
 				</section>
 
 				<section>
@@ -297,21 +320,81 @@ li{
 				</section>
 
 				<section>
-					<h3>Cambios en la distribución</h3>
-					<p>El aprendizaje automático supervisado está basado en que los datos son independientes y están distribuídos de manera idéntica (<spam class="resaltar">I.I.D. assumption</spam>)</p>
-					<p>Esto supone que $P(x,y)$ no cambia entre el conjunto de entrenamiento y de test</p>
+					<h3>A Review on Quantification Learning</h3>
+					<p>(ACM Computing Surveys, 2017)</p>
+					<div class="container">
+
+						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
+							<p>Introducción a la <span class="resaltar">cuantificación como problema con entidad propia</span> dentro del campo de aprendizaje automático y <span class="resaltar">revisión de los principales métodos</span> hasta la fecha</p>
+						</div>
+						<div class="col">
+							<img style="width:100%" src="img/acmpage.png"/>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>¿Qué es cuantificar?</h3>
+					<blockquote style="font-size:0.9em">Cuantificar consiste en estimar la distribución de las clases en un conjunto de test, usando un conjunto de entrenamiento que puede tener una distribución diferente <span class="resaltar">[Forman, 2008]</span></blockquote>
+					<p>Dado un conjunto de datos $D=\{(x_1,y_1),...,(x_n,y_n)\}$<br>
+					donde $x_i \in \mathcal{X}$ and $y_i \in \mathcal{Y}=\{c_1,...,c_l\}$</p>
+					<p>El objetivo es aprender un modelo tal que: $\bar{h}:Sample \longrightarrow [0,1]^l$, donde cada elemento de este vector es la prevalencia de cada clase $\hat{p}_{j}$ en una muestra desconocida.
+
+				</section>
+				<section>
+					<h3>¿Qué es cuantificar? (II)</h3>
+					<img src="img/cuantificadordiagrama.png" style="width:80%;background-color:white; padding: 10px" ></img>
+
+				</section>
+				<section>
+					<h3>Diferencias entre clasificación y cuantificación</h3>
+					<p>Se puede observar que la <span class="resaltar">formulación</span> de ambos problemas es <span class="resaltar">totalmente diferente</span></p>
+					<div style="width:70%;margin:auto">
+						<div style="float:left">
+							<p>Clasificación<br>$h:\mathcal{X}\longrightarrow \{c_1,...,c_l\}$</p>
+						</div>
+						<div style="float:right">
+							<p>Cuantificación<br>$\bar{h}: Sample \longrightarrow [0,1]^l$</p>
+						</div>
+					</div>
 				</section>
 
 				<section>
-					<h3>Cambios en la distribución (II)</h3>
-					<p>En los problemas de cuantificación se cumple que $P_{tr}(x,y) \ne P_{tst}(x,y)$</p>
-					<p>ya que al menos $P(y)$ cambia entre los conjuntos de entrenamiento y test</p>
+					<h3>Cambios en la distribución</h3>
+					<p>El aprendizaje automático supervisado está basado en que los datos son independientes y están distribuidos de manera idéntica (<spam class="resaltar">I.I.D. assumption</spam>)</p>
+					<p>Esto supone que $P_{tr}(x,y)=P_{tst}(x,y)$</p>
+					<p>En los problemas de cuantificación lo anterior claramente <span class="resaltar">no se cumple</span> ya que al menos $P_{tr}(y)\neq P_{tst}(y)$</p>
+				</section>
+
+				<section>
+					<h3>Dataset Shift [Moreno et al. 2012]</h3>
+					<p>$P(x, y) = P(y|x)P(x)$ en problemas $X \longrightarrow Y$<br>$P(x, y) = P(x|y)P(y)$ en problemas $Y \longrightarrow X$</p>
+					<ul>
+						<li><span class="resaltar">covariate shift</span>: $X → Y$, $P(x)$ cambia, $P(y|x)$ constante</li>
+						<li style="background-color:#FFFFCC;"><span class="resaltar">prior probability shift</span>: $Y → X$ , $P(y)$ cambia, $P(x|y)$ constante</li>
+						<li><span class="resaltar">concept shift</span>: $X → Y$, $P(y|x)$ cambia, $P(x)$ constante; $Y → X$ , $P(x|y)$ cambia, $P(y)$ constante</li>
+					</ul>
 				</section>
 
 				<section>
 					<h3>La forma más sencilla de cuantificar</h3>
-					<p>El método más sencillo para cuantificar es el método <i>Clasificar y Contar</i> (CC)</p>
+					<p>El método más sencillo para cuantificar es el método <span class="resaltar">Clasificar y Contar<span class="resaltar"> (CC)</p>
 					<p>Este método <spam class="resaltar">no es óptimo</spam> y sus resultados pueden ser mejorados</p>
+					<p><span class="resaltar">Un clasificador perfecto daría lugar a un cuantificador perfecto</span>, pero en la realidad nunca obtenemos un clasificador perfecto</p>
+				</section>
+
+
+				<section>
+					<h3>¿Por qué el método CC no es óptimo? [Forman, 2008]</h3>
+					<p>Podemos escribir la probabilidad de que un clasificador prediga un ejemplo como positivo de la siguiente manera:</p>
+						<p style="text-align:left !important">$\hat{p}_{CC}=P(h(x)=+1|y=+1)\cdot P(y=+1)+P(h(x)=+1|y=-1)\cdot P(y=-1)$
+						<br><span class="resaltar">$\hat{p}_{CC}=tpr \cdot p + fpr \cdot (1-p)$</span></p>
+						<p style="text-align:left !important">Si $tpr-fpr=1$ (clasificador perfecto) $\implies \hat{p}_{CC}=p$</p>
+
+				</section>
+
+				<section>
+					<h3>¿Por qué el método CC no es óptimo?</h3>
+					<img src="img/CC.png" style="width:60%;background-color:white; padding: 10px" ></img>
 				</section>
 
 				<section>
@@ -325,20 +408,23 @@ li{
 				</section>
 
 				<section>
-					<h3>Probabilistic Classify & Count</h3>
+					<h3>Probabilistic CC [Bella et al. 2010]</h3>
 					<p>PCC utiliza las salidas de un clasificador probabilistico para promediar la prevalencia de cada clase</p>
-
-					$\hat{p}^{PCC}_{j}=\frac{1}{|T|}\sum_{x \in T} P(y = c_{j} | x)$
+					<p>$\hat{p}^{PCC}_{j}=\frac{1}{|T|}\sum_{x \in T} P(y = c_{j} | x)$</p>
+					<p>En realidad este algoritmo <span class="resaltar">adolece de los mismos defectos que CC</span></p>
 				</section>
 
 				<section>
-					<h3>Adjusted Count y Probabilistic Adjusted Count</h3>
-					<p>AC y PAC utilizan una corrección basada en el TPR y FPR del clasificador</p>
-					$\hat{p}^{AC}_{j}=\frac{\hat{p}^{CC}_{j}-fpr}{tpr-fpr}$
+					<h3>Adjusted Count [Forman, 2008] y Probabilistic Adjusted Count [Bella et al., 2010]</h3>
+					<p>AC y PAC utilizan una <span class="resaltar">corrección</span> basada en el $tpr$ y $fpr$ del clasificador</p>
+					<p>$\hat{p}^{AC}_{j}=\frac{\hat{p}^{CC}_{j}-fpr}{tpr-fpr}$</p>
+					<p>El ajuste se obtiene al despejar la prevalencia real de la expresión que hemos visto antes:</p>
+					<p>$\hat{p}_{CC}=tpr \cdot p + fpr \cdot (1-p)$</p>
+					<p>Sería un <span class="resaltar">ajuste teóricamente perfecto</span> si la estimación de $tpr$ y $fpr$ fuesen correctas</p>
 				</section>
 
 				<section>
-					<h3>HDy</h3>
+					<h3>HDy [González-Castro et al. 2013] (I)</h3>
 					<p>Método basado en la comparación de distribuciones utilizando la <spam class="resaltar">distancia de Hellinger</spam></p>
 					<img src="img/hdy.png" style="width:100%;background-color:white; padding: 10px" ></img>
 					<aside class="notes">
@@ -353,8 +439,25 @@ li{
 				</section>
 
 				<section>
+					<h3>HDy [González-Castro et al. 2013] (II)</h3>
+					<p>La distancia de Hellinger en su forma discreta se puede calcular de la siguiente manera:</p>
+					<p>$HD(D',T)=\sqrt{\sum_{i=1}^{bins} \Big(\sqrt{ \frac{|D'_{i}|}{|D'|} } - \sqrt{ \frac{|T_{i}|}{|T|}}}\Big)^2$
+					<p>Generamos conjuntos artificiales $D'$ variando $\hat{p}$ y hacemos una búsqueda lineal hasta encontrar el valor que minimiza la distancia anterior</p>
+				</section>
+
+
+
+				<section>
 					<h3>Cuantificadores multiclase</h3>
-					<p>Se utiliza un enfoque <spam class="resaltar">one-vs-all</spam> entrenando tantos cuantificadores binarios como clases tiene el problema</p>
+					<div>
+						<div style="float:left;width:50%">
+					<p>Se utiliza un enfoque <span class="resaltar">one-vs-all</span> entrenando tantos cuantificadores binarios como clases tiene el problema</p>
+					<p>El resultado final se <span class="resaltar">normaliza</span> para que las prevalencias obtenidas sumen uno</p>
+				</div>
+				<div style="float:right;width:50%">
+						<img src="img/onevsall.png" style="width:80%;padding:10px;background-color:white" ></img>
+					</div>
+				</div>
 				</section>
 
 				<section>
@@ -362,9 +465,31 @@ li{
 					<h3>Validación de resultados</h3>
 				</section>
 
+
+				<section>
+					<h3>Validation methods for plankton image classification systems</h3>
+					<p>(Limnology and Oceanography: Methods, 2016)</p>
+					<div class="container">
+						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
+							<p>Desarrollo de <span class="resaltar">métodos de validación apropiados</span> para problemas con grandes cambios en la distribución de sus muestras</p>
+						</div>
+						<div class="col">
+							<img style="width:100%" src="img/lompage.png"/>
+						</div>
+					</div>
+					<aside class="notes">
+						<ul>
+							<li>Artículo en revista de plankton</li>
+							<li>Acostumbrados a validación cruzada tradicional por individuo</li>
+							<li>Acostumbrados a crear muestras artificiales</li>
+							<li>Obetivo: convencer a la comunidad del plankton de la importancia de usar la muestra como unidad mínima de validación</li>
+					 </ul>
+				 </aside>
+				</section>
 				<section>
 					<h3>Estrategia de validación</h3>
 					<p>La unidad mínima para los experimentos es la <spam class="resaltar">muestra</spam> y no el indivíduo</p>
+					<p>Es importante considerar la muestra tal y como viene del dispositivo de captura, <span class="resaltar">sin ningún procesamiento manual posterior</span></p>
 				</section>
 
 				<section>
@@ -378,6 +503,7 @@ li{
 						<ul>
 
 					 </ul>
+				 </aside>
 				</section>
 
 				<section>
@@ -391,6 +517,17 @@ li{
 						<img src="img/resultscvsample.png" style="width:80%;padding:10px;background-color:white" ></img>
 						<figcaption><small>Resultados de acierto en porcentaje para el conjunto del IEO</small></figcaption>
 					</figure>
+					<aside class="notes">
+						<ul>
+							<aside class="notes">
+								<ul>
+									<li>$Acc$ sería el acierto promediando todos los ejemplos de todas las muestras (probabilidad de clasificar bien una imagen)</li>
+									<li>$Acc_{sample}$ acierto calculado en cada muestra, promediandolo por el número de muestras</li>
+
+							 </ul>
+						 </aside>
+					 </ul>
+				 </aside>
 				</section>
 
 				<section>
@@ -398,6 +535,22 @@ li{
 					<figure>
 						<img src="img/reshellinger.png" style="width:80%;padding:10px;background-color:white" ></img>
 					</figure>
+					<aside class="notes">
+						<ul>
+							<li>HD entre entrenamiento y test para cada iteracción</li>
+					 </ul>
+				 </aside>
+				</section>
+				<section>
+					<h3>Otras maneras de ver los resultados</h3>
+					<figure>
+						<img src="img/comparacionclases.png" style="width:100%;padding:10px;background-color:white" ></img>
+					</figure>
+					<aside class="notes">
+						<ul>
+							<li>Hay una muestra en ciliados que da cero. viendola vemos que los 142 ejemplos de esa clase pertenecen a una subespecie. Solo hay estos 142 ejemplos en todo el conjunto!</li>
+					 </ul>
+				 </aside>
 				</section>
 
 				<section>
@@ -409,8 +562,24 @@ li{
 					</ul>
 				</section>
 
+
+
+				<section>
+					<h3>Automatic plankton quantification using deep features</h3>
+					<p>(Journal of Plankton Research, 2019)</p>
+					<div class="container">
+						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
+							<p>Uso de <span class="resaltar">deep learning</span> y <span class="resaltar">transfer learning</span> para cuantificar muestras de plankton</p>
+						</div>
+						<div class="col">
+							<img style="width:100%" src="img/jprpage.png"/>
+						</div>
+					</div>
+				</section>
+
 				<section>
 					<h3>Hold-out por muestra</h3>
+					<p>En este caso el conjunto de muestras era suficiente como para utilizar un <span class="resaltar">Hold-out por muestra</span> como estrategia de validación</p>
 					<figure>
   					<img src="img/holdout.png" style="width:60%;padding:10px;background-color:white" ></img>
   					<figcaption><small>Muestras del conjunto WHOI-Plankton.</small></figcaption>
@@ -442,75 +611,41 @@ li{
 					<figcaption>Tabla con todos los errores MAE para NF (características tradicionales) y Resnets de diferentes tamaños (reentrenadas y sin reentrenar*)</figcaption>
 </figure>
 				</section>
-
 				<section>
-					<h3>Difusión de resultados</h3>
-					<p>El contenido de esta tésis se ha publicado en <spam class="resaltar">tres artículos</spam> en revistas científicas indexadas en el JCR</p>
+					<h3>Resultados para el conjunto WHOI-Plankton (II)</h3>
+					<figure>
+					<img src="img/graphresults1.png" style="padding:10px; width:100%"</img>
+					<figcaption>Comparación por clase entre CC-NF y AC-RN101</figcaption>
+</figure>
+				</section>
+				<section>
+					<h3>Resultados para el conjunto WHOI-Plankton (III)</h3>
+					<figure>
+					<img src="img/graphresults2.png" style="padding:10px; width:100%"</img>
+					<figcaption>Comparación por clase entre CC-NF y AC-RN101</figcaption>
+</figure>
 				</section>
 
 				<section>
-					<h3>Difusión de resultados - Artículo 1</h3>
-					<p>A Review on Quantification Learning</p>
-					<p>(ACM Computing Surveys, 2017)</p>
-					<img src="img/acmlogo.png" style="width:60%"></img>
+						<h3>Conclusiones</h3>
+						<ul>
+							<li>Analizar el funcionamiento de los <span class="resaltar">métodos de cuantificación</span> en un problema real como es el plankton</li>
+							<li>Definir una <span class="resaltar">estrategia de validación sólida</span> extrapolable a otros problemas de cuantificación</li>
+							<li>Combinar los avances en el campo de la <span class="resaltar">visión artificial</span> (CNNs) con las técnicas de <span class="resaltar">cuantificación</span></li>
+						</ul>
 				</section>
 
-				<section>
-					<h3>A Review on Quantification Learning</h3>
-					<div class="container">
-						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
-							<p>Introducción a la cuantificación como problema con entidad propia dentro del campo de aprendizaje automático y revisión de los principales métodos hasta la fecha</p>
-						</div>
-						<div class="col">
-							<img style="width:100%" src="img/acmpage.png"/>
-						</div>
-					</div>
-				</section>
+
+
+
 
 				<section>
-					<h3>Difusión de resultados - Artículo 2</h3>
-					<p>Validation methods for plankton image classification systems</p>
-					<p>(Limnology and Oceanography: Methods, 2016)</p>
-					<img src="img/lomlogo.png" style="width:60%"></img>
-				</section>
-
-				<section>
-					<h3>Validation methods for plankton image classification systems</h3>
-					<div class="container">
-						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
-							<p>Desarrollo de métodos de validación apropiados para problemas con grandes cambios en la distribución de sus muestras</p>
-						</div>
-						<div class="col">
-							<img style="width:100%" src="img/lompage.png"/>
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<h3>Difusión de resultados - Artículo 3</h3>
-					<p>Automatic plankton quantification using deep features</p>
-					<p>(Journal of Plankton Research, 2019)</p>
-				</section>
-
-				<section>
-					<h3>Automatic plankton quantification using deep features</h3>
-					<div class="container">
-						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
-							<p>Uso de <i>deep learning</i> y <i>transfer learning</i> para cuantificar muestras de plankton</p>
-						</div>
-						<div class="col">
-							<img style="width:100%" src="img/jprpage.png"/>
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<h3>Reproducibilidad de los resultados</h3>
-					<p style="text-align:left">Con el fin de garantizar la reproducibilidad de los resultados se han generado los siguientes recursos:</p>
+					<h3>Difusión y reproducibilidad de los resultados</h3>
+					<p>Los resultados de esta tesis han sido publicados en <span class="resaltar">tres revistas indexadas</span> de reconocido prestigio</p>
+					<p style="text-align:left">Con el fin de garantizar la <span class="resaltar">reproducibilidad de los resultados</span>:</p>
 					<ul style="font-size:70%">
-						<li>Cuenta de <a href="https://github.com/pglez82/IFCB_quantification">GitHub</a> con todo el código necesario para repetir los experimentos</li>
-						<li><a href="https://pglez82.github.io/IFCB_quantification/">Sitio web</a> con los principales resultados de la investigación</li>
-						<li>Todas las herramientas utilizadas son <i>Open Source</i></li>
+						<li>Se ha creado una cuenta de <a href="https://github.com/pglez82/IFCB_quantification">GitHub</a> con todo el código necesario para repetir los experimentos</li>
+						<li>Todas las herramientas utilizadas para los experimentos son <span class="resaltar">Open Source</span></li>
 					</ul>
 					<aside class="notes">
 						<ul>
