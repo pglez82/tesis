@@ -205,7 +205,7 @@ li{
 
 				<section>
 					<h3>Concepto de muestra</h3>
-					<p>Una muestra es el conjunto de especímenes de plancton fotografiados por un dispositivo de captura en un <span class="resaltar">lugar y momento determinados</span></p>
+					<p>Una <span class="resaltar">muestra</span> es el conjunto de especímenes de plancton fotografiados por un dispositivo de captura en un <span class="resaltar">lugar y momento determinados</span></p>
 					<img src="img/sampletoimages.png" style="width:100%" ></img>
 					<figcaption>A partir de una muestra, después de un proceso automático de fotografiado y segmentación de las imágenes, obtenemos un conjunto de imágenes</figcaption>
 				</section>
@@ -385,7 +385,7 @@ li{
 
 				<section>
 					<h3>¿Por qué el método CC no es óptimo? [Forman, 2008]</h3>
-					<p>Podemos escribir la probabilidad de que un clasificador prediga un ejemplo como positivo de la siguiente manera:</p>
+					<p>Podemos escribir la probabilidad de que un clasificador binario prediga un ejemplo como positivo de la siguiente manera:</p>
 						<p style="text-align:left !important">$\hat{p}_{CC}=P(h(x)=+1|y=+1)\cdot P(y=+1)+P(h(x)=+1|y=-1)\cdot P(y=-1)$
 						<br><span class="resaltar">$\hat{p}_{CC}=tpr \cdot p + fpr \cdot (1-p)$</span></p>
 						<p style="text-align:left !important">Si $tpr-fpr=1$ (clasificador perfecto) $\implies \hat{p}_{CC}=p$</p>
@@ -410,14 +410,14 @@ li{
 				<section>
 					<h3>Probabilistic CC [Bella et al. 2010]</h3>
 					<p>PCC utiliza las salidas de un clasificador probabilistico para promediar la prevalencia de cada clase</p>
-					<p>$\hat{p}^{PCC}_{j}=\frac{1}{|T|}\sum_{x \in T} P(y = c_{j} | x)$</p>
+					<p>$\hat{p}^{PCC}=\frac{1}{|T|}\sum_{x \in T} P(y = +1 | x)$</p>
 					<p>En realidad este algoritmo <span class="resaltar">adolece de los mismos defectos que CC</span></p>
 				</section>
 
 				<section>
 					<h3>Adjusted Count [Forman, 2008] y Probabilistic Adjusted Count [Bella et al., 2010]</h3>
 					<p>AC y PAC utilizan una <span class="resaltar">corrección</span> basada en el $tpr$ y $fpr$ del clasificador</p>
-					<p>$\hat{p}^{AC}_{j}=\frac{\hat{p}^{CC}_{j}-fpr}{tpr-fpr}$</p>
+					<p>$\hat{p}^{AC}=\frac{\hat{p}^{CC}-fpr}{tpr-fpr}$</p>
 					<p>El ajuste se obtiene al despejar la prevalencia real de la expresión que hemos visto antes:</p>
 					<p>$\hat{p}_{CC}=tpr \cdot p + fpr \cdot (1-p)$</p>
 					<p>Sería un <span class="resaltar">ajuste teóricamente perfecto</span> si la estimación de $tpr$ y $fpr$ fuesen correctas</p>
