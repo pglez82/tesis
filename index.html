@@ -259,9 +259,9 @@ li{
 
 				<section>
 					<h3>Características computadas por una CNN</h3>
-					<p>Una CNN es una <spam class="resaltar">red neuronal convolucional</spam></p>
-					<p>Es una de las técnicas principales del <i>Deep Learning</i></p>
-					<img src="img/deeplearning.png" style="background-color:white; padding: 10px" ></img>
+					<!--<p>Una CNN es una <spam class="resaltar">red neuronal convolucional</spam></p>
+					<p>Es una de las técnicas principales del <i>Deep Learning</i></p>-->
+					<img src="img/deeplearning2.png" style="width:70%; padding: 10px" ></img>
 				</section>
 
 				<section>
@@ -373,6 +373,10 @@ li{
 						<li style="background-color:#FFFFCC;"><span class="resaltar">prior probability shift</span>: $Y → X$ , $P(y)$ cambia, $P(x|y)$ constante</li>
 						<li><span class="resaltar">concept shift</span>: $X → Y$, $P(y|x)$ cambia, $P(x)$ constante; $Y → X$ , $P(x|y)$ cambia, $P(y)$ constante</li>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Decir que <pan class="resaltar">la mayoría</span> de los algoritmos de cuantificación asumen que P(x|y es constante)</li>
+					 </ul>
 				</section>
 
 				<section>
@@ -386,9 +390,10 @@ li{
 				<section>
 					<h3>¿Por qué el método CC no es óptimo? [Forman, 2008]</h3>
 					<p>Podemos escribir la probabilidad de que un clasificador binario prediga un ejemplo como positivo de la siguiente manera:</p>
-						<p style="text-align:left !important">$\hat{p}_{CC}=P(h(x)=+1|y=+1)\cdot P(y=+1)+P(h(x)=+1|y=-1)\cdot P(y=-1)$
+						<p style="text-align:left !important">$\begin{align}\hat{p}_{CC}=&P(h(x)=+1|y=+1)\cdot P(y=+1)+
+							\\&P(h(x)=+1|y=-1)\cdot P(y=-1)\end{align}$
 						<br><span class="resaltar">$\hat{p}_{CC}=tpr \cdot p + fpr \cdot (1-p)$</span></p>
-						<p style="text-align:left !important">Si $tpr-fpr=1$ (clasificador perfecto) $\implies \hat{p}_{CC}=p$</p>
+						<p style="text-align:left !important">Si $tpr-fpr=1$ (clasificador perfecto, si $P(x|y)$ constante) $\implies \hat{p}_{CC}=p$</p>
 
 				</section>
 
@@ -479,10 +484,10 @@ li{
 					</div>
 					<aside class="notes">
 						<ul>
-							<li>Artículo en revista de plankton</li>
+							<li>Artículo en revista de plancton</li>
 							<li>Acostumbrados a validación cruzada tradicional por individuo</li>
 							<li>Acostumbrados a crear muestras artificiales</li>
-							<li>Obetivo: convencer a la comunidad del plankton de la importancia de usar la muestra como unidad mínima de validación</li>
+							<li>Obetivo: convencer a la comunidad del plancton de la importancia de usar la muestra como unidad mínima de validación</li>
 					 </ul>
 				 </aside>
 				</section>
@@ -538,6 +543,7 @@ li{
 					<aside class="notes">
 						<ul>
 							<li>HD entre entrenamiento y test para cada iteracción</li>
+							<li>Decir que es una validación cruzada estratificada</li>
 					 </ul>
 				 </aside>
 				</section>
@@ -569,7 +575,7 @@ li{
 					<p>(Journal of Plankton Research, 2019)</p>
 					<div class="container">
 						<div class="col" style="margin:auto;margin-right:50px;flex:1 40%">
-							<p>Uso de <span class="resaltar">deep learning</span> y <span class="resaltar">transfer learning</span> para cuantificar muestras de plankton</p>
+							<p>Uso de <span class="resaltar">deep learning</span> y <span class="resaltar">transfer learning</span> para cuantificar muestras de plancton</p>
 						</div>
 						<div class="col">
 							<img style="width:100%" src="img/jprpage.png"/>
