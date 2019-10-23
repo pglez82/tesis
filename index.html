@@ -282,8 +282,7 @@ li{
 
 				<section>
 					<h3>Arquitecturas de CNNs</h3>
-					<p>Una de las primeras CNN fue <span class="resaltar">AlexNet</span> en 2012 (8 capas)</p>
-					<p>A partir de ahí han aparecido redes más prufundas como <span class="resaltar">VGG</span> (19 capas) o <span class="resaltar">Inception</span> (22 capas)</p>
+						<img src="img/cnnevolution.png" style="background-color:white; padding: 10px" ></img>
 					<p>Cuanto más profundas son las redes cuesta más entrenarlas y los resultados empiezan a empeorar</p>
 				</section>
 
@@ -292,11 +291,18 @@ li{
 					<p>Las redes <span class="resaltar">Resnet</span> resuelven el problema añadiendo un enlace entre capas</p>
 					<img src="img/resnet.png" style="background-color:white; padding: 10px" ></img>
 					<p>Con esta arquitectura las <span class="resaltar">Resnet</span> pueden superar las 100 capas</p>
+					<aside class="notes">
+						<ul>
+							<li>Enlace de la salida de una capa a la entrada de otra</li>
+							<li>Mitiga el problema del vanishing gradient porque el gradiente puede fluir estas conexiones</li>
+							<li>Permiten aprender la función identidad para que al menos la red rinda como una con menos capas</li>
+					 </ul>
+				 </aside>
 				</section>
 
 				<section>
 					<h4>¿Por qué elegimos las Resnet?</h4>
-					<p>Ganadoras del concurso ImageNet en 2015 con un error del 3.6%</p>
+					<p>Ganadoras del concurso ImageNet en 2015 con un error del <span class="resaltar">3.57%</span></p>
 					<img src="img/imagenet.jpg" style="width:60%;background-color:white; padding: 10px" ></img>
 				</section>
 
@@ -377,6 +383,7 @@ li{
 						<ul>
 							<li>Decir que <pan class="resaltar">la mayoría</span> de los algoritmos de cuantificación asumen que P(x|y es constante)</li>
 					 </ul>
+				 </aside>
 				</section>
 
 				<section>
